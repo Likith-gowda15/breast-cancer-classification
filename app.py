@@ -5,8 +5,9 @@ from PIL import Image
 import gdown
 import os
 
-# Google Drive file ID (Replace with your actual ID)
+# Replace with your actual Google Drive File ID
 FILE_ID = "https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=sharing"
+URL = f"https://drive.google.com/uc?export=download&id={https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=sharing}"
 OUTPUT_PATH = "model.h5"
 
 # Function to download the model from Google Drive
@@ -14,14 +15,17 @@ OUTPUT_PATH = "model.h5"
 def load_model():
     if not os.path.exists(OUTPUT_PATH):  # Check if model already exists
         st.write("📥 Downloading model...")
-        url = f"https://drive.google.com/uc?id={FILE_ID}"
-        gdown.download(url, OUTPUT_PATH, quiet=False)
+        try:
+            gdown.download(URL, OUTPUT_PATH, quiet=False)
+            st.write("✅ Model downloaded successfully!")
+        except Exception as e:
+            st.error(f"❌ Model download failed: {e}")
+            return None
 
     if os.path.exists(OUTPUT_PATH):
-        st.write("✅ Model downloaded successfully!")
         return tf.keras.models.load_model(OUTPUT_PATH)
     else:
-        st.error("❌ Model download failed. Check your Google Drive link.")
+        st.error("❌ Model file not found after download.")
         return None
 
 # Load model
