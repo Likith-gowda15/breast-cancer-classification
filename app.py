@@ -2,22 +2,32 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-import requests
+import gdown
+import os
+
+# Google Drive file ID (Replace with your actual ID)
+FILE_ID = "https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=sharing"
+OUTPUT_PATH = "model.h5"
 
 # Function to download the model from Google Drive
 @st.cache_resource
 def load_model():
-    url = "https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=sharing"
-    output_path = "model.h5"
-    
-    response = requests.get(url)
-    with open(output_path, "wb") as f:
-        f.write(response.content)
-    
-    return tf.keras.models.load_model(output_path)
+    if not os.path.exists(OUTPUT_PATH):  # Check if model already exists
+        st.write("📥 Downloading model...")
+        url = f"https://drive.google.com/uc?id={FILE_ID}"
+        gdown.download(url, OUTPUT_PATH, quiet=False)
+
+    if os.path.exists(OUTPUT_PATH):
+        st.write("✅ Model downloaded successfully!")
+        return tf.keras.models.load_model(OUTPUT_PATH)
+    else:
+        st.error("❌ Model download failed. Check your Google Drive link.")
+        return None
 
 # Load model
 model = load_model()
+if model is None:
+    st.stop()
 
 # Define class labels
 CLASS_NAMES = ["Benign", "Malignant"]
