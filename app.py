@@ -7,7 +7,7 @@ import requests
 # Function to download the model from Google Drive
 @st.cache_resource
 def load_model():
-    url = "https://drive.google.com/uc?id=https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=drive_link"
+    url = "https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=sharing"
     output_path = "model.h5"
     
     response = requests.get(url)
