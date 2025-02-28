@@ -41,9 +41,12 @@ CLASS_NAMES = ["Benign", "Malignant"]
 # 🔹 Function to preprocess image
 def preprocess_image(image):
     image = image.convert("RGB")  # Ensure 3 color channels
-    image = image.resize((224, 224))  # Resize to match model input
+    image = image.resize((48, 48))  # Resize to match model input
     image = np.array(image, dtype=np.float32) / 255.0  # Normalize
-    image = image.reshape((1, 224, 224, 3))  # Ensure correct input shape
+
+    # Flatten if model expects 1D input (modify based on model)
+    image = image.flatten().reshape((1, -1))  # Ensure correct input shape
+
     return image
 
 # 🔹 Streamlit UI
@@ -71,4 +74,3 @@ if uploaded_file:
     # Display results
     st.subheader(f"📌 Prediction: **{CLASS_NAMES[class_index]}**")
     st.write(f"🟢 Confidence: {confidence:.2f}%")
-
