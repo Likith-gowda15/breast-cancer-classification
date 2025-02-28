@@ -7,7 +7,8 @@ import os
 
 # Replace with your actual Google Drive File ID
 FILE_ID = "https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=sharing"
-URL = f"https://drive.google.com/uc?export=download&id={https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=sharing}"
+URL = f"https://drive.google.com/uc?export=download&id={124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X
+}"
 OUTPUT_PATH = "model.h5"
 
 # Function to download the model from Google Drive
