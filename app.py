@@ -47,28 +47,93 @@ def preprocess_image(image):
     
     return image
 
-# 🔹 Streamlit UI
-st.title("🔬 Breast Cancer Cell Classification")
-st.write("Upload a cell image to classify it as **Benign** or **Malignant**.")
+# 🔹 Sidebar Navigation
+st.sidebar.title("🔍 Navigation")
+st.sidebar.write("Use the menu below to navigate.")
+page = st.sidebar.radio("Select a Page:", ["🏠 Home", "📤 Upload & Predict", "ℹ️ About"])
 
-# 🔹 File uploader
-uploaded_file = st.file_uploader("📤 Upload an Image", type=["jpg", "png", "jpeg"])
-
-if uploaded_file:
-    image = Image.open(uploaded_file)
-    st.image(image, caption="🖼 Uploaded Image", use_column_width=True)
+if page == "🏠 Home":
+    st.title("🏠 Breast Cancer Classifier")
+    st.write("""
+    Welcome! This app classifies breast cancer cell images as **Benign** or **Malignant**.
     
-    # Preprocess the image
-    processed_image = preprocess_image(image)
+    🔹 **How It Works:**  
+    - Upload an image of a breast cancer cell  
+    - The model analyzes the image  
+    - It predicts if the cell is **Benign** or **Malignant**
+    
+    👉 Click on "Upload & Predict" in the sidebar to start!
+    """)
 
-    # Debugging: Print shape before prediction
-    st.write(f"📌 Processed Image Shape: {processed_image.shape}")
+elif page == "📤 Upload & Predict":
+    st.title("📤 Upload & Predict")
 
-    # Make prediction
-    prediction = model.predict(processed_image)
-    class_index = np.argmax(prediction)
-    confidence = np.max(prediction) * 100
+    # 🔹 File uploader
+    uploaded_file = st.file_uploader("Upload an Image", type=["jpg", "png", "jpeg"])
 
-    # Display results
-    st.subheader(f"📌 Prediction: **{CLASS_NAMES[class_index]}**")
-    st.write(f"🟢 Confidence: {confidence:.2f}%")
+    if uploaded_file:
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            image = Image.open(uploaded_file)
+            st.image(image, caption="🖼 Uploaded Image", use_column_width=True)
+
+        with col2:
+            st.write("✅ **Image uploaded successfully!**")
+            st.write(f"📏 **Image Size:** {image.size}")
+
+        # Preprocess the image
+        processed_image = preprocess_image(image)
+
+        # Debugging: Print shape before prediction
+        st.write(f"📌 **Processed Image Shape:** {processed_image.shape}")
+
+        # Prediction with progress bar
+        with st.spinner("🧐 Analyzing image... Please wait..."):
+            progress_bar = st.progress(0)
+            for percent in range(100):
+                progress_bar.progress(percent + 1)
+            
+            prediction = model.predict(processed_image)
+            class_index = np.argmax(prediction)
+            confidence = np.max(prediction) * 100
+
+        # Display results with emojis
+        result = "🟢 **Benign** 😊" if class_index == 0 else "🔴 **Malignant** 😔"
+        st.subheader(f"📌 Prediction: {result}")
+        st.write(f"✅ **Confidence: {confidence:.2f}%**")
+
+elif page == "ℹ️ About":
+    st.title("ℹ️ About This Project")
+    st.write("""
+    **Breast Cancer Classification App**  
+    - This application uses a **Convolutional Neural Network (CNN)** to classify breast cancer cell images.  
+    - It was trained using a **Custom CNN model** with TensorFlow & Keras.  
+    - The app is deployed using **Streamlit Cloud**.  
+      
+    **👩‍💻 Developed by:** Swaroopa  
+    **📅 Year:** 2025  
+    **🔗 GitHub:** [Your GitHub Repo](https://github.com/SwaroopaNekkanti)  
+    """)
+
+# 🔹 Custom Footer
+st.markdown(
+    """
+    <style>
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #1c1c1e;
+        text-align: center;
+        padding: 10px;
+        color: white;
+    }
+    </style>
+    <div class="footer">
+        <p>© 2025 Breast Cancer Classifier | Developed by Swaroopa</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
