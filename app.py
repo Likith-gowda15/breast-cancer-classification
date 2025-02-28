@@ -23,7 +23,9 @@ def load_model():
             return None
 
     if os.path.exists(OUTPUT_PATH):
-        return tf.keras.models.load_model(OUTPUT_PATH)
+        model = tf.keras.models.load_model(OUTPUT_PATH)
+        st.write(f"✅ Model loaded! Expected input shape: {model.input_shape}")
+        return model
     else:
         st.error("❌ Model file not found after download.")
         return None
@@ -38,9 +40,10 @@ CLASS_NAMES = ["Benign", "Malignant"]
 
 # 🔹 Function to preprocess image
 def preprocess_image(image):
+    image = image.convert("RGB")  # Ensure 3 color channels
     image = image.resize((224, 224))  # Resize to match model input
-    image = np.array(image) / 255.0   # Normalize
-    image = np.expand_dims(image, axis=0)  # Add batch dimension
+    image = np.array(image, dtype=np.float32) / 255.0  # Normalize
+    image = image.reshape((1, 224, 224, 3))  # Ensure correct input shape
     return image
 
 # 🔹 Streamlit UI
@@ -56,7 +59,10 @@ if uploaded_file:
     
     # Preprocess the image
     processed_image = preprocess_image(image)
-    
+
+    # Debugging: Print shape before prediction
+    st.write(f"📌 Processed Image Shape: {processed_image.shape}")
+
     # Make prediction
     prediction = model.predict(processed_image)
     class_index = np.argmax(prediction)
@@ -65,3 +71,4 @@ if uploaded_file:
     # Display results
     st.subheader(f"📌 Prediction: **{CLASS_NAMES[class_index]}**")
     st.write(f"🟢 Confidence: {confidence:.2f}%")
+
