@@ -5,13 +5,12 @@ from PIL import Image
 import gdown
 import os
 
-# Replace with your actual Google Drive File ID
-FILE_ID = "https://drive.google.com/file/d/124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X/view?usp=sharing"
-URL = f"https://drive.google.com/uc?export=download&id={124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X
-}"
+# 🔹 Replace with your actual Google Drive File ID
+FILE_ID = "124Fo29-Vt7UVeCLdRnJl75dZda3wRn9X"  # <-- Update with your actual ID
+URL = f"https://drive.google.com/uc?export=download&id={FILE_ID}"
 OUTPUT_PATH = "model.h5"
 
-# Function to download the model from Google Drive
+# 🔹 Function to download and load the model
 @st.cache_resource
 def load_model():
     if not os.path.exists(OUTPUT_PATH):  # Check if model already exists
@@ -29,35 +28,40 @@ def load_model():
         st.error("❌ Model file not found after download.")
         return None
 
-# Load model
+# 🔹 Load the trained model
 model = load_model()
 if model is None:
     st.stop()
 
-# Define class labels
+# 🔹 Define class labels
 CLASS_NAMES = ["Benign", "Malignant"]
 
-# Function to preprocess image
+# 🔹 Function to preprocess image
 def preprocess_image(image):
-    image = image.resize((224, 224))
-    image = np.array(image) / 255.0
-    image = np.expand_dims(image, axis=0)
+    image = image.resize((224, 224))  # Resize to match model input
+    image = np.array(image) / 255.0   # Normalize
+    image = np.expand_dims(image, axis=0)  # Add batch dimension
     return image
 
-# Streamlit UI
-st.title("Breast Cancer Cell Classification")
+# 🔹 Streamlit UI
+st.title("🔬 Breast Cancer Cell Classification")
 st.write("Upload a cell image to classify it as **Benign** or **Malignant**.")
 
-uploaded_file = st.file_uploader("Upload an Image", type=["jpg", "png", "jpeg"])
+# 🔹 File uploader
+uploaded_file = st.file_uploader("📤 Upload an Image", type=["jpg", "png", "jpeg"])
 
 if uploaded_file:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(image, caption="🖼 Uploaded Image", use_column_width=True)
     
+    # Preprocess the image
     processed_image = preprocess_image(image)
+    
+    # Make prediction
     prediction = model.predict(processed_image)
     class_index = np.argmax(prediction)
     confidence = np.max(prediction) * 100
 
-    st.subheader(f"Prediction: **{CLASS_NAMES[class_index]}**")
-    st.write(f"Confidence: {confidence:.2f}%")
+    # Display results
+    st.subheader(f"📌 Prediction: **{CLASS_NAMES[class_index]}**")
+    st.write(f"🟢 Confidence: {confidence:.2f}%")
