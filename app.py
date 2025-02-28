@@ -41,12 +41,10 @@ CLASS_NAMES = ["Benign", "Malignant"]
 # 🔹 Function to preprocess image
 def preprocess_image(image):
     image = image.convert("RGB")  # Ensure 3 color channels
-    image = image.resize((48, 48))  # Resize to match model input
-    image = np.array(image, dtype=np.float32) / 255.0  # Normalize
-
-    # Flatten if model expects 1D input (modify based on model)
-    image = image.flatten().reshape((1, -1))  # Ensure correct input shape
-
+    image = image.resize((48, 48))  # Resize to match model input (48x48 pixels)
+    image = np.array(image, dtype=np.float32) / 255.0  # Normalize pixel values (0-1)
+    image = np.expand_dims(image, axis=0)  # Add batch dimension (1, 48, 48, 3)
+    
     return image
 
 # 🔹 Streamlit UI
