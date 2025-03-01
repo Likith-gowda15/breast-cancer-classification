@@ -111,7 +111,7 @@ elif page == "ℹ️ About":
     - It was trained using a **Custom CNN model** with TensorFlow & Keras.  
     - The app is deployed using **Streamlit Cloud**.  
       
-    **👩‍💻 Developed by:** Swaroopa & Chowda Reddy 
+    **👩‍💻 Developed by:** Swaroopa & Chowdareddy  
     **📅 Year:** 2025  
     **🔗 GitHub:** [Your GitHub Repo](https://github.com/SwaroopaNekkanti)  
     """)
@@ -132,7 +132,7 @@ st.markdown(
     }
     </style>
     <div class="footer">
-        <p>© 2025 Breast Cancer Classifier | Developed by Swaroopa</p>
+        <p>© 2025 Breast Cancer Classifier | Developed by Swaroopa & Chowdareddy</p>
     </div>
     """,
     unsafe_allow_html=True
