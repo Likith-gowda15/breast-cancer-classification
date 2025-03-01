@@ -111,7 +111,7 @@ elif page == "ℹ️ About":
     - It was trained using a **Custom CNN model** with TensorFlow & Keras.  
     - The app is deployed using **Streamlit Cloud**.  
       
-    **👩‍💻 Developed by:** Swaroopa  
+    **👩‍💻 Developed by:** Swaroopa & Chowda Reddy 
     **📅 Year:** 2025  
     **🔗 GitHub:** [Your GitHub Repo](https://github.com/SwaroopaNekkanti)  
     """)
