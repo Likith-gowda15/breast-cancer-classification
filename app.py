@@ -119,7 +119,7 @@ elif page == "ℹ️ About":
       
     **👩‍💻 Developed by:** Likith G & Shakthi Prasad 
     **📅 Year:** 2025  
-    **🔗 GitHub:** [Your GitHub Repo](https://github.com/SwaroopaNekkanti)  
+    **🔗 GitHub:** [Your GitHub Repo](https://github.com/Likith-gowda15/breast-cancer-classification)  
     """)
 
 # 🔹 Custom Footer
@@ -143,4 +143,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
