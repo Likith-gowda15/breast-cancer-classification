@@ -6,7 +6,7 @@
 A deep learning-based web application that detects breast cancer from histopathological images using a custom CNN and ResNet50 model. This is my capstone project at GITAM School of Technology, deployed via Streamlit.
 
 ## 🚀 Live Demo
-👉 [Click here to try the deployed app](https://breast-cancer-classification-kbctfhvtuetb8wz6yz8fdz.streamlit.app/)
+👉 [Click here to try the deployed app](https://breast-cancer-classification-miniproject-g3gazp4ukngvvyiuhxl88l.streamlit.app/)
 
 ---
 
@@ -61,11 +61,10 @@ A deep learning-based web application that detects breast cancer from histopatho
 
 ## 👨‍🎓 Academic Context
 
-- 🎓 **Capstone Project**  
-- 🏫 **GITAM School of Technology**  
-- 👨‍🏫 Guided by **Prof. Sangameshwar**  
-- 📆 Final Year B.Tech (Computer Science) — Class of 2025  
-- 👨‍💻 Developed by **Chowda Reddy N** and **N Swaroopa**
+- 🎓 **Mini Project**  
+- 🏫 **Alvas Institute of Engineering and Technology**   
+- 📆 Third Year B.Tech (Computer Science) — Class of 2026  
+- 👨‍💻 Developed by **Shakthi Prasad** and **Likith G*
 
 ---
 
@@ -98,15 +97,3 @@ numpy
 pillow  
 matplotlib  
 
-🤝 Acknowledgements  
-Kaggle - BreaKHis Dataset  
-GITAM School of Technology, Bangalore  
-Prof. Sangameshwar, for academic guidance  
-
-📜 License  
-This project is open-source and available under the MIT License.  
-
-🙋‍♂️ Connect With Me  
-Chowda Reddy N  
-Final Year B.Tech CSE | Full Stack Enthusiast | AI Explorer  
-💬 Email: reddyreddy44477@gmail.com
