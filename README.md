@@ -3,7 +3,7 @@
 
 # 🧠 Breast Cancer Cell Classification using Deep Learning
 
-A deep learning-based web application that detects breast cancer from histopathological images using a custom CNN and ResNet50 model. This is my capstone project at GITAM School of Technology, deployed via Streamlit.
+A deep learning-based web application that detects breast cancer from histopathological images using a custom CNN and ResNet50 model. This project is deployed via Streamlit.
 
 ## 🚀 Live Demo
 👉 [Click here to try the deployed app](https://breast-cancer-classification-miniproject-g3gazp4ukngvvyiuhxl88l.streamlit.app/)
@@ -64,7 +64,7 @@ A deep learning-based web application that detects breast cancer from histopatho
 - 🎓 **Mini Project**  
 - 🏫 **Alvas Institute of Engineering and Technology**   
 - 📆 Third Year B.Tech (Computer Science) — Class of 2026  
-- 👨‍💻 Developed by **Shakthi Prasad** and **Likith G*
+- 👨‍💻 Developed by **Shakthi Prasad** and **Likith G**
 
 ---
 
