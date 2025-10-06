@@ -62,8 +62,8 @@ A deep learning-based web application that detects breast cancer from histopatho
 
 - 🎓 **Mini Project**  
 - 🏫 **Alvas Institute of Engineering and Technology**   
-- 📆 Third Year B.Tech (Computer Science) — Class of 2026  
-- 👨‍💻 Developed by **Shakthi Prasad** and **Likith G**
+- 📆 Third Year B.Tech (Computer Science) — Class of 2025 
+- 👨‍💻 Developed by **Likith G** and **Team*
 
 ---
 
