@@ -23,7 +23,6 @@ A deep learning-based web application that detects breast cancer from histopatho
 ## 📁 Project Structure
 
 📁 Detect_BreastCancer.ipynb # Data loading, preprocessing, evaluation
-📁 train_CustomModel_32_conv_20k.ipynb # CNN model training (32 conv layers, 20k steps)
 📁 train_ResNet50_32_20k.ipynb # ResNet50 training notebook
 📁 app.py # Streamlit app code (UI + model inference)
 📁 requirements.txt # Dependencies for running the app
@@ -63,7 +62,7 @@ A deep learning-based web application that detects breast cancer from histopatho
 - 🎓 **Mini Project**  
 - 🏫 **Alvas Institute of Engineering and Technology**   
 - 📆 Third Year B.Tech (Computer Science) — Class of 2025 
-- 👨‍💻 Developed by **Likith G** and **Team*
+- 👨‍💻 Developed by **Likith G** and **Team**
 
 ---
 
