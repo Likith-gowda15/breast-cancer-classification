@@ -54,7 +54,6 @@ A deep learning-based web application that detects breast cancer from histopatho
 
 | Model         | Accuracy | Notes                          |
 |---------------|----------|---------------------------------|
-| Custom CNN    | ~92%     | 32 Convolutional layers, trained for 20,000 steps |
 | ResNet50      | ~95%     | Transfer learning model with fine-tuning |
 
 ---
